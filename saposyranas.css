@@ -1,0 +1,27 @@
+#tablero{
+	margin-top:20%;	
+}
+
+#info,h1{
+	margin-left: 10%;
+}
+
+.rocks>img{
+	width: 100%;
+	
+}
+
+.rocks{
+	display: inline-block;
+	width: 10%;	
+	margin:1%;
+	position: relative;
+}
+.animal{
+	position: absolute;	
+	height: auto;
+	width: auto;
+	z-index: 10;
+	top:-120%;	
+}
+
