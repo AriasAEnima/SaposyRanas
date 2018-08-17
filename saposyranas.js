@@ -15,9 +15,10 @@ function start(){
 		tab[3]='vacio';
 	}
 	drawtab();
-	$(".animal").click(function(){
-		salto(this,$(this).attr('id'));
-	});	
+	$(".rocks").click(function(){
+		var sid=$(this).attr('id').replace(/r/g,'');
+		alert("has dado click al: "+sid);
+	});
 }
 
 function drawtab(){
