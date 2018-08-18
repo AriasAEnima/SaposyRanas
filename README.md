@@ -3,7 +3,7 @@
 
 > Reglas del juego:
 > Sapos=rojos , Ranas=verdes
->> Los sapos solo pueden saltar hacia la derecha
->> Las Ranas solo pueden saltar hacia la izquierda
->> Solo se puede saltar a una casilla vacia si está a continuacion o...
->> se puede saltar sobre **una sola** rana o sapo (siempre y cuando a la casilla que se llegue esté vacia).
+>> 1. Los sapos solo pueden saltar hacia la derecha
+>> 2. Las Ranas solo pueden saltar hacia la izquierda
+>> 3. Solo se puede saltar a una casilla vacia si está a continuacion o...
+>> 4. se puede saltar sobre **una sola** rana o sapo (siempre y cuando a la casilla que se llegue esté vacia).
