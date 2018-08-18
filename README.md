@@ -1,9 +1,10 @@
 # Sapos y Ranas
 ## Quise realizar un pequeño juego para probar javascript en general.
 ## Para jugar descargar como zip, descomprimir y abrir el archivo saposyranas.html con el explorador web
+## La victoria se da cuando las ranas y sapos han llegado al lado opuesto del inicial
 
 > Reglas del juego:
-> Sapos=rojos , Ranas=verdes
+> Sapos=rojos , Ranas=verdes 
 >> 1. Los sapos solo pueden saltar hacia la derecha
 >> 2. Las Ranas solo pueden saltar hacia la izquierda
 >> 3. Solo se puede saltar a una casilla vacia si está a continuacion o...
