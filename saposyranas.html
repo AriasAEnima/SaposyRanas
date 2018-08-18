@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Sapos y Ranas</title>
-	<link rel="stylesheet" type="text/css" href="normalize.css">
-	<link rel="stylesheet" type="text/css" href="saposyranas.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/saposyranas.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	
 </head>
 <body>	
@@ -12,22 +14,26 @@
 		<div id="movimientos">Movimientos: 0</div>
 	</div>
 	<div id="tablero">
-		<div id="r0" class="rocks">
-			</div>
-		<div id="r1" class="rocks">
-			</div>
-		<div id="r2" class="rocks">
-			</div>
-		<div id="r3" class="rocks">
-			</div>
-		<div id="r4" class="rocks">
-			</div>
-		<div id="r5" class="rocks">
-			</div>
-		<div id="r6" class="rocks">
-			</div>		
+		<div id="lineaRana">
+			<img src="image/red.png" class="card animal" id="c0">
+			<img src="image/red.png" class="card animal" id="c1">
+			<img src="image/red.png" class="card animal" id="c2">
+			<img src="" class="card vacio" id="c3">
+			<img src="image/green.png" class="card animal" id="c4">
+			<img src="image/green.png" class="card animal" id="c5">
+			<img src="image/green.png" class="card animal" id="c6">			
+		</div>
+		<div id="lineaRocas">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">
+			<img src="image/roca.png" alt="" class="rocks">	
+		</div>
 	</div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script type="text/javascript" src="saposyranas.js"></script>
 </body>
