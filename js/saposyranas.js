@@ -2,11 +2,7 @@ var tab=new Array(7);
 var moves=0;
 var space=100;
 function start(){	
-	createtab();
-		
-	$(".card").click(function(){
-		salto(this,$(this).attr('id'));		
-	});	
+	createtab();		
 }
 
 function printtab() {
@@ -20,29 +16,59 @@ function printtab() {
 	}	
 }
 
+function restart(){
+	createtab();
+	moves=0;
+	actualizarMov();	
+}
+
 function createtab(){
-	var row;
+	//<img src="image/red.png" class="card animal" id="c2" onclick="salto('c2')">	
+	var colection="";
+	var row;	
 	for (i=0;i<tab.length;i++){
+		var src='<img src=';
+		var classhtml=' class ="card';	
+		var idhtml=' id="c'+i+'"';
 		var imgtype="vacio";
 		var row=new Array(2);
+		var action=' onclick="salto('; 	action+="'c"+i+"')";action+='">'
 		if (i<3){
-			imgtype="red.png";			
+			src+='"image/red.png"';
+			imgtype="red";
+			classhtml+=' animal"';
 		}else if(i>3){
-			imgtype="green.png";	
-		}		
-		row[0]=imgtype;
-		row[1]="c"+i;		
-		space=parseInt(document.getElementById(row[1]).offsetWidth,10);		
-		document.getElementById(row[1]).style.left=(space*i*1.3)+"px";
-		tab[i]=row;					
+			src+='"image/green.png"';
+			imgtype="green";
+			classhtml+=' animal"';
+		}else{
+			src+='""';
+			classhtml+='"';
+		}
+		row=[imgtype,"c"+i];
+		colection+=src+classhtml+idhtml+action;
+		tab[i]=row;	
 	}
+	document.getElementById("lineaRanas").innerHTML=colection;
+	organize();	
 }
-function salto(obj,id){
+
+function organize(){	
+	space=parseInt(document.getElementById("r1").offsetWidth,10);
+	//console.log(space);
+	for (i=0;i<tab.length;i++){
+		document.getElementById(tab[i][1]).style.left=space*i+10+"px";
+	}	
+}
+
+
+function salto(id){		
 	var pos=searchpos(id);	
 	var type=tab[pos][0];
-	var delta=0;	
-	if (type=="green.png")delta=-1;
-	if (type=="red.png")delta=1;	
+	var delta=0;		
+	obj=document.getElementById(id);	
+	if (type=="green")delta=-1;
+	if (type=="red")delta=1;	
 	if (pos+delta<7 && pos+delta>=0 && tab[pos+delta][0]=='vacio'){
 		jump(obj,delta);
 		swap(pos,pos+delta);	
@@ -51,7 +77,7 @@ function salto(obj,id){
 		jump(obj,delta*2);
 		swap(pos,pos+delta*2);				
 	}else{
-		alert("imposible mover");
+		alerta(document.getElementById("alerta"));
 	}
 	//alert("salta");
 }
@@ -73,13 +99,16 @@ function swap(pos1,pos2){
 	tab[pos2][0]=temp1t;
 	tab[pos1][1]=tab[pos2][1];
 	tab[pos2][1]=temp1i;
-	moves++;	
-	document.getElementById("movimientos").innerHTML=moves;
+	moves++;
+	actualizarMov();
 	if(estado()){
-		alert("Ha ganado");
+		aparecer(document.getElementById("victoria"));
 	}
 }
 
+function actualizarMov(){		
+	document.getElementById("contadorMov").innerHTML=moves;
+}
 
 
 function jump(obj,delta){		
@@ -96,7 +125,7 @@ function arriba(e) {
 }
 
 function alLado(e,delta) {	
-	var ans=parseInt(e.style.left, 10)+(space*1.3)*delta;	
+	var ans=parseInt(e.style.left, 10)+space*delta;	
 	$(e).animate({
        left:ans},500);
 }
@@ -106,11 +135,27 @@ function abajo(e) {
        top:"0px"},500);
 }
 
+function alerta(e){
+	$(e).animate({        
+        opacity: '1',       
+    },500);
+    $(e).animate({        
+        opacity: '0',        
+    },1000);
+}
+
+function aparecer(e){
+	$(e).animate({        
+        opacity: '1',       
+    },500);   
+}
+
+
 function estado(){
 	var ganando=true;
 	var i=0;
 	while (ganando && i<4){
-		if(i<3 && tab[i][0]!='green.png'){
+		if(i<3 && tab[i][0]!='green'){
 			ganando=false;
 		}else if(i==3 && tab[i][0]!='vacio'){
 			ganando=false;
