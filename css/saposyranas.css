@@ -277,6 +277,6 @@ footer p{
 	
 }
 
-footer:nth-child(1) p{
+footer p:nth-child(2){
 	background: red;
 }
