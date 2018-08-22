@@ -94,6 +94,10 @@ span{
 	position: absolute;
 	width: 10%;	
 }
+.card{
+	cursor: pointer;
+}
+
 #lineaRocas{
 	position: relative;
 	top:12%;	
