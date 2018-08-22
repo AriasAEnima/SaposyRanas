@@ -21,6 +21,9 @@ section{
 	color: white;	
 }
 
+span{
+	text-decoration: underline;
+}
 #movimientos *{	
 	display: inline-block;	
 }
