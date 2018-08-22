@@ -6,7 +6,7 @@ body{
 	background-size: 100%;
 	color: white;
 }
-h1,section,#tablero{
+h1,section,#tablero,footer{
 	width: 900px;	
 }
 h1{	
@@ -27,7 +27,7 @@ h2,#instrucciones{
 	font-size: 18px;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-section{	
+section,footer{	
 	display:block;
 	margin-left: auto;
 	margin-right: auto;		
@@ -192,7 +192,7 @@ span{
 }
 
 @media screen and (max-width: 1000px){	
-	section,#tablero{
+	section,#tablero,footer{
 		width: 600px;
 	}
 	#tablero{
@@ -219,7 +219,7 @@ span{
 	body{
 		background-image: url(../image/bodyvertical.jpg);
 	}
-	section,#tablero{
+	section,#tablero,footer{
 		width: 95%;
 		height: 150px;
 	}
@@ -266,3 +266,17 @@ span{
 	}		
 }
 
+footer{
+	text-align: center;	
+	background: grey;
+	padding: 5px;
+	border-radius: 30px;
+}
+
+footer p{		
+	
+}
+
+footer:nth-child(1) p{
+	background: red;
+}
