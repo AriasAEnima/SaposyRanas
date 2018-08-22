@@ -218,12 +218,13 @@ span{
 	}
 	section,#tablero{
 		width: 95%;
+		height: 150px;
 	}
 	#tablero{
-		height: 200px;
+		
 	}
 	h1{
-		width: 300px;
+		
 		font-size: 30px;
 	}	
 	h2{
@@ -234,6 +235,14 @@ span{
 		width: 13.4%;			
 		margin-left: 2px;		
 	}
+	#lineaRocas{
+		position: relative;
+		top:11.5%;	
+		height: 8%;	
+		margin-left: 15%;
+		margin-right: 15%;
+		padding: 0px;
+	}	
 	#instrucciones{
 		font-size: 10px;
 	}
@@ -253,3 +262,4 @@ span{
 		padding: 0px;	
 	}		
 }
+

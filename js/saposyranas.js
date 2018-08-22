@@ -97,10 +97,11 @@ function createtab(){
 
 function organize(){	
 	space=parseInt(document.getElementById("r1").offsetWidth,10);
-	while (space==0){
-		console.log("es 0");
-	}
-	
+	$(function() {
+	    var tab = $('#tablero');
+	    var widthtab = tab.width()/2;	   
+	    tab.css('height', widthtab);
+	});
 	for (i=0;i<tab.length;i++){
 		document.getElementById(tab[i][1]).style.left=space*i+space/10+"px";
 	}	
