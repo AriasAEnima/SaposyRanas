@@ -96,6 +96,8 @@ span{
 }
 .card{
 	cursor: pointer;
+	 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #lineaRocas{
