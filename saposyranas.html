@@ -2,7 +2,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Sapos y Ranas</title>
+	<title>Sapos y Ranas Juego</title>
+	<meta name="Description" content="Juego Sapos y Ranas consiste en hacer que lleguen las ranas a un lado y los sapos al otro saltando; o jump frog puzzle ">
+	<meta name="Keywords" content="game,juego,saltar,ranas,puzzle,frog">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/saposyranas.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -22,21 +24,26 @@
 				<li>Se puede saltar sobre <span>una sola</span> rana o sapo (siempre y cuando a la casilla que se llegue esté vacia).</li>
 			</ul>		
 		</div>
-		<div id="info">
-			<div id="movimientos">
-				<p>Movimientos: <p>
-				<p id="contadorMov"> 0 <p>
+		
+		<div id="tablero">	
+			<div id="info">
+				<div id="movimientos">
+					<p>Movimientos: <p>
+					<p id="contadorMov"> 0 <p>
+				</div>
+				
+				<button id="reiniciar" onclick="restart()">	Reiniciar	</button>
+						
+				<div id="alerta">
+					<p>Imposible !</p>
+				</div>
+			</div>	
+			<div id="timer">
+				<p id="timerValue">00:00<p>
 			</div>
-			
-			<button id="reiniciar" onclick="restart()">	Reiniciar	</button>
-					
-			<div id="alerta">
-				<p>Imposible !</p>
-			</div>
-		</div>
-		<div id="tablero">		
-			<div id=victoria>
-				<p> Victoria !</p>
+			<div id=panelVictoria>
+				<p id=tituloVictoria> Victoria !</p>
+				<p id=tiempoFinal> Tiempo: 00:00</p>
 			</div>	
 			<div id="lineaRanas">
 			
@@ -52,7 +59,8 @@
 			</div>
 		</div>		
 	
-	</section>	
+	</section>		
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/saposyranas.js"></script>
 </body>

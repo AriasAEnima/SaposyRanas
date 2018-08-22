@@ -1,8 +1,23 @@
 var tab=new Array(7);
 var moves=0;
 var space=100;
+var clickadmin;
+var cronometro;
+var canclick;
+var segs=0;
+var mins=0;
+var last="";
+var width=0;
 function start(){	
 	createtab();		
+	canclick=0;
+	clickadmin=setInterval(function(){
+		canclick++;
+	},1000);
+	runTime();
+	$(window).resize(function() {
+	  organize();
+	});
 }
 
 function printtab() {
@@ -15,9 +30,36 @@ function printtab() {
 		alert(print);
 	}	
 }
+function runTime(){
+	document.getElementById("timerValue").innerHTML="00:00";
+	cronometro=setInterval(function(){		
+		var m="00";
+		var s="";
+		if(segs==60){
+            segs=0;
+            mins++;
+            if (mins<10) m="0"+mins;
+            else m=mins;
+
+            if(mins==60) mins=0;
+        }
+        if (segs<10) s ="0"+segs;
+        else s= segs;
+        segs++;
+        document.getElementById("timerValue").innerHTML=m+":"+s;
+	},1000);
+}
 
 function restart(){
 	createtab();
+	if(estado()){
+		alert("reinicio");		
+	}
+	clearInterval(cronometro);	
+	segs=0;
+	mins=0;
+	runTime();
+	document.getElementById("panelVictoria").style.opacity=0;
 	moves=0;
 	actualizarMov();	
 }
@@ -55,10 +97,14 @@ function createtab(){
 
 function organize(){	
 	space=parseInt(document.getElementById("r1").offsetWidth,10);
-	//console.log(space);
+	while (space==0){
+		console.log("es 0");
+	}
+	
 	for (i=0;i<tab.length;i++){
-		document.getElementById(tab[i][1]).style.left=space*i+10+"px";
+		document.getElementById(tab[i][1]).style.left=space*i+space/10+"px";
 	}	
+
 }
 
 
@@ -66,6 +112,7 @@ function salto(id){
 	var pos=searchpos(id);	
 	var type=tab[pos][0];
 	var delta=0;		
+	
 	obj=document.getElementById(id);	
 	if (type=="green")delta=-1;
 	if (type=="red")delta=1;	
@@ -77,7 +124,11 @@ function salto(id){
 		jump(obj,delta*2);
 		swap(pos,pos+delta*2);				
 	}else{
-		alerta(document.getElementById("alerta"));
+		if(last!=id || canclick>3){
+			canclick=0;
+			alerta(document.getElementById("alerta"));
+		}	
+		last=id;
 	}
 	//alert("salta");
 }
@@ -102,7 +153,8 @@ function swap(pos1,pos2){
 	moves++;
 	actualizarMov();
 	if(estado()){
-		aparecer(document.getElementById("victoria"));
+		document.getElementById("tiempoFinal").innerHTML="Tiempo: "+document.getElementById("timerValue").innerHTML;
+		aparecer(document.getElementById("panelVictoria"));
 	}
 }
 
