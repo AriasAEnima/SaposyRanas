@@ -33,16 +33,15 @@ function printtab() {
 function runTime(){
 	document.getElementById("timerValue").innerHTML="00:00";
 	cronometro=setInterval(function(){		
-		var m="00";
+		var m="";
 		var s="";
 		if(segs==60){
             segs=0;
-            mins++;
-            if (mins<10) m="0"+mins;
-            else m=mins;
-
-            if(mins==60) mins=0;
+            mins++;     
+            if(mins==60) mins=0;       
         }
+        if (mins<10) m="0"+mins;
+        else m=mins;            
         if (segs<10) s ="0"+segs;
         else s= segs;
         segs++;
