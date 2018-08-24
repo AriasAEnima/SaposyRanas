@@ -72,16 +72,16 @@ span{
 	line-height: 0.2;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-#info>div,#info>button{		
+#info>div,#info>button{
+	display: inline-block;
+	position: relative;
 	border-radius: 30px;
-	width: 30%;
-	height: 50px;	
-	display: inline-flex;
-  	justify-content: center;
-	padding: 0px;	
+	width: 30%;	
+	text-align: center;	
+	padding: 10px;
 }
 #movimientos p{
-	margin-right: 2px;
+	display: inline-block; 	
 }
 #lineaRanas{
 	position: relative;
@@ -268,15 +268,36 @@ span{
 
 footer{
 	text-align: center;	
-	background: grey;
-	padding: 5px;
 	border-radius: 30px;
+	background: rgb(9,140,75,0.7);
+	padding: 5px;	
 }
 
-footer p{		
+footer a,p{		
+	margin:2px;
+}
+
+footer a{		
+	background: linear-gradient(to bottom, #ff8282 1%,#8f0222 35%,#a90329 99%,#a90329 100%); 	border-radius: 30px;
+	text-align: center;	
+	display: inline-block;	
+	color:white;
+	text-decoration: none;
+	transition: all 1ms ease;
+	animation: 2s anuncio infinite linear;
 	
 }
+footer a:hover{		
+	background: #990C0C;
+	cursor: pointer;
 
-footer p:nth-child(2){
-	background: red;
+}
+
+@keyframes anuncio{
+	25%{
+		transform: perspective(100px) rotateX(60deg);
+	}
+	75%{
+		transform: perspective(100px) rotateX(-60deg);
+	}
 }
