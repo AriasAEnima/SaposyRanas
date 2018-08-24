@@ -221,7 +221,7 @@ span{
 	}
 	section,#tablero,footer{
 		width: 95%;
-		height: 150px;
+		
 	}
 	#tablero{
 		
@@ -264,6 +264,9 @@ span{
 		font-size: 8px;	
 		padding: 0px;	
 	}		
+	footer{
+		font-size: 10px;
+	}
 }
 
 footer{
@@ -271,6 +274,7 @@ footer{
 	border-radius: 30px;
 	background: rgb(9,140,75,0.7);
 	padding: 5px;	
+	margin-bottom: 10px;
 }
 
 footer a,p{		
