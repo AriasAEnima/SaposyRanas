@@ -86,7 +86,7 @@ function createtab(){
 			src+='""';
 			classhtml+='"';
 		}
-		row=[imgtype,"c"+i];
+		row=[imgtype,"c"+i];  // tipo , id
 		colection+=src+classhtml+idhtml+action;
 		tab[i]=row;	
 	}
@@ -95,35 +95,36 @@ function createtab(){
 }
 
 function organize(){	
-	space=parseInt(document.getElementById("r1").offsetWidth,10);
+	space=parseInt(document.getElementById("r1").offsetWidth,10);  // Punto de referencia
 	$(function() {
 	    var tab = $('#tablero');
 	    var widthtab = tab.width()/2;	   
 	    tab.css('height', widthtab);
 	});
 	for (i=0;i<tab.length;i++){
-		document.getElementById(tab[i][1]).style.left=space*i+space/10+"px";
+		document.getElementById(tab[i][1]).style.left=space*i+space/10+"px"; // espaciado
 	}	
-
 }
 
 
 function salto(id){		
 	var pos=searchpos(id);	
 	var type=tab[pos][0];
-	var delta=0;		
+	var delta=0;	//Direccion	
 	
 	obj=document.getElementById(id);	
 	if (type=="green")delta=-1;
 	if (type=="red")delta=1;	
+	// salto simple
 	if (pos+delta<7 && pos+delta>=0 && tab[pos+delta][0]=='vacio'){
 		jump(obj,delta);
-		swap(pos,pos+delta);	
-					
+		swap(pos,pos+delta);			
+	// salto doble			
 	}else if(pos+delta*2<7 && pos+delta*2>=0 && tab[pos+delta*2][0]=='vacio'){		
 		jump(obj,delta*2);
 		swap(pos,pos+delta*2);				
 	}else{
+		// evitar pilas de alertas (si se clickea varias veces)
 		if(last!=id || canclick>3){
 			canclick=0;
 			alerta(document.getElementById("alerta"));
@@ -164,7 +165,7 @@ function actualizarMov(){
 
 
 function jump(obj,delta){		
-	if(delta>1|| delta<-1){
+	if(delta>1|| delta<-1){  // Si debe pasar osbre una rana
 		arriba(obj);
 	}
 	alLado(obj,delta);
@@ -207,11 +208,7 @@ function estado(){
 	var ganando=true;
 	var i=0;
 	while (ganando && i<4){
-		if(i<3 && tab[i][0]!='green'){
-			ganando=false;
-		}else if(i==3 && tab[i][0]!='vacio'){
-			ganando=false;
-		}
+		if((i<3 && tab[i][0]!='green') || (i==3 && tab[i][0]!='vacio')) ganando=false;		
 		i++;
 	}
 	return ganando;
