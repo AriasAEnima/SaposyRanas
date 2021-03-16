@@ -83,4 +83,4 @@ jobs:
           state: '${{env.DEPLOY_STATE}}'
           environment-id: 'master'
           environment-display-name: 'master'
-          environment-type: 'master'      
+          environment-type: 'production'      
