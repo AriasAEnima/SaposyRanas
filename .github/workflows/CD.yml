@@ -4,6 +4,7 @@ on:
   push:
     branches: 
     - master
+    - SYR-1-Test-Branch
 jobs:
   creat-app-folder:
     runs-on: ubuntu-latest
