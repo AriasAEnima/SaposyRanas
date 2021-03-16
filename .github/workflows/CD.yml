@@ -40,7 +40,5 @@ jobs:
         name: app-folder
     
     - name: Deploy to S3
-      run: | 
-        ls
-        aws s3 sync app-folder s3://s3saposyranas/app/ 
+      run: aws s3 sync . s3://s3saposyranas/app/ 
     
