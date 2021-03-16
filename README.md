@@ -24,6 +24,11 @@ with:
   environment-type: 'testing'
 ```
 
+![image](/other/Captura.PNG)
+![image](/other/Captura2.PNG)
+![image](/other/Captura4.PNG)
+
+
 ----
 
 ## Jugar
