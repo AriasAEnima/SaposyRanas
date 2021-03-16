@@ -41,4 +41,45 @@ jobs:
     
     - name: Deploy to S3
       run: aws s3 sync . s3://s3saposyranas/
-    
+  report:
+   steps:
+      - name: Deploy to Prod
+        run: |
+          echo "github.event_name: ${{github.event_name}}"
+          echo "github.ref: ${{github.ref}}"
+          echo "DEPLOY_STATE=successful" >> $GITHUB_ENV
+          echo "Deploying to Prod..."
+      - name: Failed Deployment
+        if: failure()
+        run: echo "DEPLOY_STATE=failed" >> $GITHUB_ENV
+      - name: Parse Jira Keys from All Commits
+        id: jira_keys
+        if: always()
+        uses: HighwayThree/jira-extract-issue-keys@master
+        with:
+          is-pull-request: ${{ github.event_name == 'pull_request' }}
+          parse-all-commits: ${{ github.event_name == 'push' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Confirm Deploy State and Jira Key Values
+        if: always()
+        run: |
+          echo "DEPLOY_STATE: ${{env.DEPLOY_STATE}}"
+          echo "Jira Keys: ${{steps.jira_keys.outputs.jira-keys}}"
+      - name: Push Deployment Info to Jira
+        if: steps.jira_keys.outputs.jira-keys != ''
+        id: push_deployment_info_to_jira
+        uses: HighwayThree/jira-upload-deployment-info@master
+        with:
+          client-id: '${{ secrets.CLIENT_ID }}'
+          client-secret: '${{ secrets.CLIENT_SECRET }}'
+          cloud-instance-base-url: 'https://ariasaenima.atlassian.net/'
+          issue-keys: "${{ steps.jira_keys.outputs.jira-keys }}"
+          display-name: "Deployment Master"
+          description: "Deployment Mastert"
+          last-updated: '${{github.event.head_commit.timestamp}}'
+          label: 'Deployment Master Label'
+          state: '${{env.DEPLOY_STATE}}'
+          environment-id: 'master'
+          environment-display-name: 'master'
+          environment-type: 'master'      
