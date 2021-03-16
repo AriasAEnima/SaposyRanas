@@ -41,18 +41,20 @@ jobs:
     
     - name: Deploy to S3
       run: aws s3 sync . s3://s3saposyranas/
+    - name: Set Status Prod
+      if: success() 
+      run: |
+        echo "github.event_name: ${{github.event_name}}"
+        echo "github.ref: ${{github.ref}}"
+        echo "DEPLOY_STATE=successful" >> $GITHUB_ENV
+        echo "Deploying to Prod..."
+    - name: Failed Deployment
+      if: failure() ||  cancelled() 
+      run: echo "DEPLOY_STATE=failed" >> $GITHUB_ENV
   report:
    runs-on: ubuntu-latest
+   needs: deploy
    steps:
-      - name: Deploy to Prod
-        run: |
-          echo "github.event_name: ${{github.event_name}}"
-          echo "github.ref: ${{github.ref}}"
-          echo "DEPLOY_STATE=successful" >> $GITHUB_ENV
-          echo "Deploying to Prod..."
-      - name: Failed Deployment
-        if: failure()
-        run: echo "DEPLOY_STATE=failed" >> $GITHUB_ENV
       - name: Parse Jira Keys from All Commits
         id: jira_keys
         if: always()
