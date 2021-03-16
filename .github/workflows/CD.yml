@@ -24,6 +24,7 @@ jobs:
         path: app
   deploy:
     runs-on: ubuntu-latest
+    needs: creat-app-folder
     steps:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
