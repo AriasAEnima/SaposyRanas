@@ -49,12 +49,13 @@ jobs:
       if: failure() ||  cancelled() 
       run: |
         echo "failed" > status.txt
-    - name: Share Variable      
+    - name: Share Variable   
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         name: status
         path: status.txt
-        
+
   report:
    runs-on: ubuntu-latest
    needs: deploy
