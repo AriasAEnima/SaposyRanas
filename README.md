@@ -11,3 +11,4 @@
 
 
 # Estamos sincronizando con Jira
+# Parece que hay deploy , fallido intentemos.
