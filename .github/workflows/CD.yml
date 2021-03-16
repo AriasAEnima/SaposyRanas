@@ -5,36 +5,39 @@ on:
     branches: 
     - master
 jobs:
-  choice:
+  creat-app-folder:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - name: Create folder
       run: mkdir app
-    - name:
+    - name: Copy Files
       run: |
         cp -r css app
         cp -r image app
         cp -r js app
         cp -r index.html app
     - name: share artifact inside workflow
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-folder
-          path: app
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-folder
+        path: app
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1 
 
-      - name: Get artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: app-folder
-      
-      - name: Deploy to S3
-        run: aws s3 sync . arn:aws:s3:::s3saposyranas 
-        working-directory: app-folder
+    - name: Get artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: app-folder
+    
+    - name: Deploy to S3
+      run: aws s3 sync . arn:aws:s3:::s3saposyranas 
+      working-directory: app-folder
