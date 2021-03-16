@@ -66,7 +66,7 @@ jobs:
         with:
           name: status
       - name: Set Status
-        run: echo "DEPLOY_STATE=$(cat status/status.txt)" >> $GITHUB_ENV
+        run: echo "DEPLOY_STATE=$(cat status.txt)" >> $GITHUB_ENV
       - name: Parse Jira Keys from All Commits
         id: jira_keys
         if: always()
