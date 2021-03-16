@@ -40,5 +40,5 @@ jobs:
         name: app-folder
     
     - name: Deploy to S3
-      run: aws s3 sync . arn:aws:s3:::s3saposyranas 
+      run: aws s3 sync . s3://s3saposyranas/app/ 
       working-directory: app-folder
