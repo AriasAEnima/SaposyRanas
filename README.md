@@ -11,4 +11,4 @@
 
 
 # Estamos sincronizando con Jira
-# Parece que hay deploy , fallido intentemos.
+# Parece que hay deploy , fallido intentemos. SYR-6
