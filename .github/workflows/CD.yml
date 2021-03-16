@@ -93,6 +93,7 @@ jobs:
           display-name: "Deployment Master"
           description: "Deployment Mastert"
           last-updated: '${{github.event.head_commit.timestamp}}'
+          pipeline-display-name: '${{ github.workflow }} (#${{ github.run_number }})'
           label: 'Deployment Master Label'
           state: '${{env.DEPLOY_STATE}}'
           environment-id: 'master'
