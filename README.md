@@ -32,6 +32,8 @@ with:
 
 ![image](/other/Captura3.PNG)
 
+Cuando no son de produccion aparece la el icono sin fondo verde.
+
 ----
 
 ## Jugar
