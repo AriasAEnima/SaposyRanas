@@ -30,7 +30,7 @@ with:
 
 ## Ya existe otra rama ademas produccion
 
-![image](/other/Caprtura3.PNG)
+![image](/other/Captura3.PNG)
 
 ----
 
