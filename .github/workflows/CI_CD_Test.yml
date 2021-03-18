@@ -91,7 +91,7 @@ jobs:
       run: |
         echo "github.event_name: ${{github.event_name}}"
         echo "github.ref: ${{github.ref}}"
-        echo "successful"> status.txt       
+        echo "successful"> statusdeploy.txt       
     - name: Failed Deployment
       if: failure() ||  cancelled() 
       run: |
