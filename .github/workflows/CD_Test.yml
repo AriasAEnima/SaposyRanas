@@ -49,7 +49,7 @@ jobs:
       id: push_build_info_to_jira
       uses: HighwayThree/jira-upload-build-info@master
       with:
-        cloud-id: '${{ secrets.CLOUD_ID }}'
+        cloud-instance-base-url: 'https://ariasaenima.atlassian.net/'
         client-id: '${{ secrets.CLIENT_ID }}'
         client-secret: '${{ secrets.CLIENT_SECRET }}'
         pipeline-id: '${{ github.repository }} ${{ github.workflow }}'
