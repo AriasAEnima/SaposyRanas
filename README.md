@@ -28,6 +28,11 @@ with:
 ![image](/other/Captura2.PNG)
 ![image](/other/Captura4.PNG)
 
+## Ya existe otra rama ademas produccion
+
+![image](/other/Captura3.PNG)
+
+Cuando no son de produccion aparece la el icono sin fondo verde.
 
 ----
 
